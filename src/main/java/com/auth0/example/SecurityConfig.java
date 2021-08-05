@@ -20,11 +20,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().mvcMatchers("/").permitAll().anyRequest().authenticated().and().oauth2Login();
 	}
 
-// If using HS256, create a Bean to specify the HS256 should be used. By default, RS256 will be used.
-//    @Bean
-//    public JwtDecoderFactory<ClientRegistration> idTokenDecoderFactory() {
-//        OidcIdTokenDecoderFactory idTokenDecoderFactory = new OidcIdTokenDecoderFactory();
-//        idTokenDecoderFactory.setJwsAlgorithmResolver(clientRegistration -> MacAlgorithm.HS256);
-//        return idTokenDecoderFactory;
-//    }
 }
