@@ -69,7 +69,7 @@ public class ApiService {
 	}
 
 	public Map<String, String> getAuth0ClientIdNameMap() throws Exception {
-		ResponseEntity<String> result = getCall("https://dev-qai1ga3a.us.auth0.com/api/v2/clients");
+		ResponseEntity<String> result = getCall("https://" + properties.getAuth0Domain() + "/api/v2/clients");
 		Map<String, String> clientIdNameMap = new HashMap<String, String>();
 		JSONArray array = new JSONArray(result.getBody());
 		for (int i = 0; i < array.length(); i++) {
@@ -80,7 +80,7 @@ public class ApiService {
 	}
 
 	public List<String> getRulesByClient(Auth0Client auth0Client) throws Exception {
-		ResponseEntity<String> result = getCall("https://dev-qai1ga3a.us.auth0.com/api/v2/rules");
+		ResponseEntity<String> result = getCall("https://" + properties.getAuth0Domain() + "/api/v2/rules");
 		JSONArray array = new JSONArray(result.getBody());
 		List<String> ruleNamesForClient = new ArrayList<String>();
 		for (int i = 0; i < array.length(); i++) {

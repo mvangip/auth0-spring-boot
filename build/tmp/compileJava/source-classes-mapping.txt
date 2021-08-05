@@ -1,15 +1,15 @@
-com/auth0/example/model/Auth0Client.java
- com.auth0.example.model.Auth0Client
-com/auth0/example/DemoApplication.java
- com.auth0.example.DemoApplication
-com/auth0/example/controller/LogoutHandler.java
- com.auth0.example.controller.LogoutHandler
-com/auth0/example/SecurityConfig.java
- com.auth0.example.SecurityConfig
-com/auth0/example/controller/ProfileController.java
- com.auth0.example.controller.ProfileController
 com/auth0/example/config/ApplicationProperties.java
  com.auth0.example.config.ApplicationProperties
+com/auth0/example/controller/LogoutHandler.java
+ com.auth0.example.controller.LogoutHandler
+com/auth0/example/DemoApplication.java
+ com.auth0.example.DemoApplication
+com/auth0/example/controller/ProfileController.java
+ com.auth0.example.controller.ProfileController
+com/auth0/example/model/Auth0Client.java
+ com.auth0.example.model.Auth0Client
+com/auth0/example/SecurityConfig.java
+ com.auth0.example.SecurityConfig
 com/auth0/example/controller/Auth0RulesController.java
  com.auth0.example.controller.Auth0RulesController
 com/auth0/example/service/ApiService.java
