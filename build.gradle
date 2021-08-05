@@ -25,4 +25,5 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     implementation 'org.json:json:20090211'
+    implementation 'org.springframework.boot:spring-boot-devtools:2.5.3'
 }

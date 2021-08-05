@@ -23,3 +23,10 @@ spring:
           auth0:
             # trailing slash is important!
             issuer-uri: https://dev-qai1ga3a.us.auth0.com/
+application:
+  mvclogin:
+    managementAPIClientId: gpk65BOFnOmOFT02x23jeqUUrM0PJE2b
+    managementAPIClientSecret: MzbskEBq0qkZwEwwqO7UIbEEumJYK686Qv7SihLwd_OjFPuJz8FoD9jE0DTu-H74
+    managementAPIGrantType: client_credentials
+    auth0Domain: dev-qai1ga3a.us.auth0.com
+

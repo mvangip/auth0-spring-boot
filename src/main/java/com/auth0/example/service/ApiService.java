@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,10 +18,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.auth0.example.config.ApplicationProperties;
 import com.auth0.example.model.Auth0Client;
 
 @Service
 public class ApiService {
+
+	@Autowired
+	private ApplicationProperties properties;
 
 	public ResponseEntity<String> getCall(String url) throws Exception {
 		HttpHeaders headers = new HttpHeaders();
@@ -50,17 +55,16 @@ public class ApiService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
 		JSONObject requestBody = new JSONObject();
-		requestBody.put("client_id", "gpk65BOFnOmOFT02x23jeqUUrM0PJE2b");
-		requestBody.put("client_secret", "MzbskEBq0qkZwEwwqO7UIbEEumJYK686Qv7SihLwd_OjFPuJz8FoD9jE0DTu-H74");
-		requestBody.put("audience", "https://dev-qai1ga3a.us.auth0.com/api/v2/");
-		requestBody.put("grant_type", "client_credentials");
+		requestBody.put("client_id", properties.getManagementAPIClientId());
+		requestBody.put("client_secret", properties.getManagementAPIClientSecret());
+		requestBody.put("audience", "https://" + properties.getAuth0Domain() + "/api/v2/");
+		requestBody.put("grant_type", properties.getManagementAPIGrantType());
 
 		HttpEntity<String> request = new HttpEntity<String>(requestBody.toString(), headers);
 
 		RestTemplate restTemplate = new RestTemplate();
-		HashMap<String, String> result = restTemplate.postForObject("https://dev-qai1ga3a.us.auth0.com/oauth/token",
-				request, HashMap.class);
-		System.out.println();
+		HashMap<String, String> result = restTemplate
+				.postForObject("https://" + properties.getAuth0Domain() + "/oauth/token", request, HashMap.class);
 		return result.get("access_token");
 	}
 
@@ -71,8 +75,6 @@ public class ApiService {
 		for (int i = 0; i < array.length(); i++) {
 			JSONObject object = array.getJSONObject(i);
 			clientIdNameMap.put(object.getString("name"), object.getString("client_id"));
-			System.out.println("Name = " + object.getString("name"));
-			System.out.println("Client ID = " + object.getString("client_id"));
 		}
 		return clientIdNameMap;
 	}
